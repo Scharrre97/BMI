@@ -1,0 +1,70 @@
+<!doctype html>
+<html class="no-js" lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Foundation for Sites</title>
+    <link rel="stylesheet" href="css/foundation.css">
+    <link rel="stylesheet" href="css/app.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="src/person.js"></script>
+    <script src="src/bmi_calculator.js"></script>
+    <script src='https://code.jquery.com/jquery-2.1.4.js'></script>
+    <!-- <script src="http://example.com/script.js"></script> -->
+    <script type="text/javascript">
+      $(document).ready(function () {
+          $('#calculate').click(function () {
+             var w = parseFloat($('#weight').val());
+             var h = parseFloat($('#height').val());
+             var u = $('input:radio[name="unit"]:checked').val();
+             var person = new Person({weight: w, height: h, unit: u});
+             person.calculate_bmi();
+             $('#motherfuckers').html('Your BMI is ' + person.bmiValue);
+             $('#display_message').html('and you are '+ person.bmiMessage);
+             $('#display_result').html('and u should eat '+ person.resultMessage);
+          });
+      });
+    </script>
+  </head>
+
+  <body>
+
+    <div class="row">
+
+      <div class="large-6 columns">
+
+
+         <h2>Calculate BMI value</h2><br>
+
+
+
+            <input type="text" id="weight" placeholder="Weight">
+            <input type="text" id="height" placeholder="Height"><br>
+            <input type="radio" name="unit" Value="Metric" checked>Metric
+            <input type="radio" name="unit" Value="Imperial">Imperial<br>
+            <input type="submit" id="calculate" value="Calculate">
+
+         <div>
+            <div id="motherfuckers"></div>
+            <span id="display_message"></span>
+         </div>
+
+      </div>
+
+      <div class="large-6 columns">
+
+
+
+      </div>
+
+
+
+   </div>
+
+    <script src="js/vendor/jquery.js"></script>
+    <script src="js/vendor/what-input.js"></script>
+    <script src="js/vendor/foundation.js"></script>
+    <script src="js/app.js"></script>
+  </body>
+</html>
